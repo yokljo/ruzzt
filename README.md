@@ -1,6 +1,7 @@
 # RUZZT
 
-A clone of the DOS game "ZZT", written in the [Rust](https://rust-lang.org) programming language.
+A clone of the engine for the DOS game "[ZZT](https://en.wikipedia.org/wiki/ZZT)", written in the
+[Rust](https://rust-lang.org) programming language.
 
 ![Screenshot of RUZZT](screenshot.png)
 
@@ -45,7 +46,7 @@ the folder where you run `cargo run`, so that they show up in the world selectio
   a centipede that has just turned around will not be redrawn immediately, so you don't see the head
   appearing at the end of the tail until it moves by one tile.
 * Super ZZT simulation support (although, SZT files should be able to be loaded via the
-  zzt_file_format crate).
+  `zzt_file_format` crate).
 
 ## Status
 
