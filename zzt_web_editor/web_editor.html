@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+		<script type="module" src="web_editor.js"></script>
+		<link rel="stylesheet" href="web_editor.css" />
+	</head>
+	<body>
+		<select id="boards_list"></select>
+		<canvas id="board_canvas" width="640" height="350"></canvas>
+		<button onclick="main.render()">Render</button>
+		<input type="file"  onchange="main.load_zzt_file(this.files)">Load file</input>
+		
+		<div id="status_elements"></div>
+	</body>
+</html>

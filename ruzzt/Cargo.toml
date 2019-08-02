@@ -1,0 +1,20 @@
+[package]
+name = "ruzzt"
+version = "0.1.0"
+description = "A ZZT clone"
+authors = ["Joshua Worth", "Rebecca Worth"]
+license = "MIT"
+edition = "2018"
+
+[dependencies]
+zzt_file_format = {path = "../zzt_file_format", version = "*"}
+ruzzt_engine = {path = "../ruzzt_engine", version = "*"}
+num = "0.2.0"
+num-derive = "0.2.2"
+jemallocator = "0.3.0"
+color-backtrace = { version = "0.1" }
+clap = "2.32.*"
+
+[dependencies.sdl2]
+version = "0.31.0"
+features = ["image"]

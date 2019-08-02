@@ -1,0 +1,24 @@
+#status_elements {
+	float: right;
+	width: 400px;
+}
+
+.status_div {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.status_div .title {
+	background: black;
+	color: white;
+	padding: 3px;
+}
+
+.status_div .label {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.status_div input {
+	width: 70px;
+}

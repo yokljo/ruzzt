@@ -1,0 +1,8 @@
+[workspace]
+members = [
+    "ruzzt",
+    "ruzzt_engine",
+    "zzt_file_format",
+    "zzt_to_json",
+    "zzt_web_editor",
+]

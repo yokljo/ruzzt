@@ -1,0 +1,11 @@
+[package]
+name = "zzt_to_json"
+version = "0.1.0"
+authors = ["Joshua Worth", "Rebecca Worth"]
+license = "MIT"
+edition = "2018"
+
+[dependencies]
+serde_json = "1.0.*"
+clap = "2.32.*"
+zzt_file_format = {path = "../zzt_file_format", version = "*"}

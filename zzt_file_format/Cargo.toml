@@ -1,0 +1,15 @@
+[package]
+name = "zzt_file_format"
+version = "0.1.0"
+description = "A library for reading and writing ZZT and SZT worlds."
+authors = ["Joshua Worth", "Rebecca Worth"]
+license = "MIT"
+edition = "2018"
+
+[dependencies]
+byteorder = "1.2.4"
+num = "0.2.0"
+num-derive = "0.2.2"
+num-traits = "0.2.5"
+serde = "1.0.*"
+serde_derive = "1.0.*"
