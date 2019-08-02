@@ -51,7 +51,7 @@ the folder where you run `cargo run`, so that they show up in the world selectio
 ## Status
 
 RUZZT can be used to play most ZZT worlds correctly, including:
-* TOWN.ZZT
+* TOWN.ZZT (at least, it worked last time I checked)
 * The fractal generator from
   [PREPOSTM.ZZT](https://museumofzzt.com/file/p/prepostm.zip?file=PREPOSTM.ZZT)
   (this can be made to run to completion in 10 minutes if you take out all the sleeps in the code)
