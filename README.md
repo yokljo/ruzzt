@@ -17,7 +17,7 @@ correctly.
 
 1. Clone the repository.
 2. Install the Rust compiler ([Rust](https://rust-lang.org)).
-3. Since this project uses the `sdl2` crate, you will need to install SDL2 aswell. Follow the
+3. Since this project uses the `sdl2` crate, you will need to install SDL2 as well. Follow the
    instructions in the [sdl2 crate README](https://github.com/Rust-SDL2/rust-sdl2).
 4. In the root directory of the repository:
    - `cd ruzzt`
