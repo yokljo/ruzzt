@@ -21,6 +21,10 @@ correctly.
    - `cd ruzzt`
    - `cargo run` (Note that `cargo` is shipped with the main Rust installer)
 
+Note that you will probably want to download the original game and copy the .ZZT world files into
+the folder where you run `cargo run`, so that they show up in the world selection list
+(you can download it from [The Museum of ZZT](https://museumofzzt.com/zzt)).
+
 ## Goals
 
 * Replicate the behaviour of the original game as closely as possible.
