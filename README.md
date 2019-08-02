@@ -2,6 +2,8 @@
 
 A clone of the DOS game "ZZT", written in the [Rust](https://rust-lang.org) programming language.
 
+![Screenshot of RUZZT](screenshot.png)
+
 My wife and I wrote this as a fun exercise, and went a lot further with it than originally
 anticipated. We wanted to try to replicate the original game's behaviour by simply looking at it
 running in Dosbox and seeing if we could make RUZZT do the same thing. This means the code
