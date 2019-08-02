@@ -11,6 +11,14 @@ Eventually we did get far enough that it seemed like a waste of time to try to g
 specific things were implemented, so we used a disassembler to make sure various behaviours worked
 correctly.
 
+## Building
+
+1. Clone the repository.
+2. Install the Rust compiler ([Rust](https://rust-lang.org)).
+3. In the root directory of the repository:
+   - `cd ruzzt`
+   - `cargo run` (Note that `cargo` is shipped with the main Rust installer)
+
 ## Goals
 
 * Replicate the behaviour of the original game as closely as possible.
@@ -35,7 +43,8 @@ correctly.
 
 RUZZT can be used to play most ZZT worlds correctly, including:
 * TOWN.ZZT
-* The fractal generator from [PREPOSTM.ZZT](https://museumofzzt.com/file/p/prepostm.zip?file=PREPOSTM.ZZT)
+* The fractal generator from
+  [PREPOSTM.ZZT](https://museumofzzt.com/file/p/prepostm.zip?file=PREPOSTM.ZZT)
   (this can be made to run to completion in 10 minutes if you take out all the sleeps in the code)
 * And probably a whole bunch of other stuff we haven't tested.
 
@@ -44,9 +53,9 @@ Known issues include:
 * Missing world editor (probably out of scope)
 * Missing high score system
 * Bomb+Conveyor bug doesn't work.
-** This is where you try to activate a bomb that is rotating around a conveyor, and it displays a
-   bunch of random characters then causes both the player and the bomb to disappear, breaking the
-   game.
+  - This is where you try to activate a bomb that is rotating around a conveyor, and it displays a
+    bunch of random characters then causes both the player and the bomb to disappear, breaking the
+    game.
 * Severe lack of unit tests (at least there's a couple so far, better than nothing).
 * Several instances of "TODO" in the code.
 * And more!
@@ -58,8 +67,9 @@ Known issues include:
 * `ruzzt_engine` - This is a library that can be used to simulate ZZT worlds. This module is
   intended to be easily reusable for any ZZT front end. For example, you could go ahead and adapt
   this for your own 3D ZZT clone.
-* `zzt_file_format` - This is a library that can read and write ZZT and SZT worlds. It supports [serde](https://serde.rs/),
-  so you can easily serialise and deserialise ZZT worlds to other formats.
+* `zzt_file_format` - This is a library that can read and write ZZT and SZT worlds. It supports
+  [serde](https://serde.rs/), so you can easily serialise and deserialise ZZT worlds to other
+  formats.
 * `zzt_to_json` - This is a simple command-line executable that uses the `zzt_file_format` to
   facilitate conversion between ZZT and JSON files.
 * `zzt_web_editor` - This is a work-in-progress ZZT world editor that runs in a web browser using
