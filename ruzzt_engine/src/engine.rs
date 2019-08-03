@@ -932,7 +932,7 @@ impl RuzztEngine {
 
 		//self.update_screen();
 
-		println!("{} - {}", self.board_simulator.world_header.player_board, self.world.boards[self.board_simulator.world_header.player_board as usize].meta_data.board_name.to_string(true));
+		//println!("{} - {}", self.board_simulator.world_header.player_board, self.world.boards[self.board_simulator.world_header.player_board as usize].meta_data.board_name.to_string(true));
 
 		if self.is_end_of_game() {
 			if !was_end_of_game {

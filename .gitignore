@@ -14,3 +14,5 @@ junk
 zzt_to_json/*.JSON
 zzt_to_json/*.json
 zzt_web_editor/pkg
+*.ZZT
+*.SAV

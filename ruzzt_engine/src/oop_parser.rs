@@ -927,7 +927,7 @@ impl<'code> OopParser<'code> {
 		}
 
 		if includes_myself {
-			self.apply_label_operation(&message_desc.label, label_op);
+			self.apply_label_operation(receiver_name_opt.as_ref(), &message_desc.label, label_op);
 		}
 
 		if includes_others {
@@ -1246,16 +1246,38 @@ impl<'code> OopParser<'code> {
 					// For some reason, when you #restore x, all local x's will be restored, but if
 					// you #restore [anything]:x, only one x from each matching object will be
 					// restored, even if the current object matches.
+					// Upon further inspection, it seems like this is the reason for the above
+					// behaviour:
+					/*
+					# A message string is "object_name:label_name", as used with #send, #zap, #restore
+
+					def find_first_label(string_to_search_for, label_name): ...
+					def find_next_label(string_to_search_for, label_name, search_start_pos): ...
+
+					message = parse_message()
+					for status in status_elements:
+						code = get_status_code(status)
+						pos = find_first_label(code, "\r'", label_name)
+						while pos >= 0:
+							# Change the ' to a :
+							code[pos] = ":"
+							# Note how on this line, object_name is passed, where label_name should have been:
+							pos = find_next_label(code, "\r'", object_name, pos)
+					*/
+					// This is just a simplification of what actually happens, but it's close
+					// enough. So, imagine this scenario:
+					// status1: #restore a:b
+					// status2: @a\r'b\r'b\r'a\r
+					// Then when status1 code runs, it will restore status2's first `b` label, then
+					// when it looks for the next one, it will restore the `a` label, because it's
+					// now looking for the object name instead of the label.
+
 					self.skip_spaces();
 					let send_message_desc = self.parse_message();
 					self.read_to_end_of_line();
 					self.skip_new_line();
 
-					if send_message_desc.receiver == ReceiverDesc::Myself {
-						self.apply_message_desc_label_operation(send_message_desc, LabelOperation::RestoreAll, status_index, actions);
-					} else {
-						self.apply_message_desc_label_operation(send_message_desc, LabelOperation::Restore, status_index, actions);
-					}
+					self.apply_message_desc_label_operation(send_message_desc, LabelOperation::RestoreZztStyle, status_index, actions);
 				}
 				b"send" => {
 					self.skip_spaces();
@@ -1490,29 +1512,46 @@ impl<'code> OopParser<'code> {
 		}
 	}
 
-	pub fn restore_labels(&mut self, label_to_find: &DosString, restore_all: bool) {
+	/// Convert `'label_to_find` in the code to `:label_to_find`. You would think that this only
+	/// requires the `label_to_find` to work, but in the original ZZT, if there is an receiver name
+	/// specified in a message string (eg. "dude:bombed", where "dude" is the receiver name), all
+	/// labels that aren't the very first label will be matched against the receiver name instead of
+	/// the label name. I think this is just a mistake, but now it's a feature!
+	/// For example, running the following:
+	/// status1: `#restore a:b`
+	/// status2: `@a\r'b\r'b\r'a\r`
+	/// The status2 code will become `@a\r:b\r'b\r:a\r`.
+	pub fn restore_labels(&mut self, receiver_name_opt: Option<&DosString>, label_to_find: &DosString) {
 		let mut restore_positions = vec![];
 
-		{
-			let mut parser = OopParser::new(self.code.as_ref(), 0);
+		let mut parser = OopParser::new(self.code.as_ref(), 0);
+		let mut is_first_match = true;
 
-			while parser.pos < parser.code.len() as i16 {
-				// Reading to the end of the line first prevents labels on the first line of a program from
-				// working, just like in the original ZZT.
-				parser.read_to_end_of_line();
-				parser.skip_new_line();
+		while parser.pos < parser.code.len() as i16 {
+			// Reading to the end of the line first prevents labels on the first line of a program from
+			// working, just like in the original ZZT.
+			parser.read_to_end_of_line();
+			parser.skip_new_line();
 
-				let op_pos = parser.pos;
+			let op_pos = parser.pos;
 
-				if let OopOperator::Comment = parser.parse_operator() {
-					let label = parser.read_word().to_lower();
-					if label == *label_to_find {
-						restore_positions.push(op_pos);
-
-						if !restore_all {
-							break;
-						}
+			if let OopOperator::Comment = parser.parse_operator() {
+				let label = parser.read_word().to_lower();
+				let has_match = if is_first_match {
+					label == *label_to_find
+				} else {
+					if let Some(receiver_name) = receiver_name_opt {
+						// See function comment for this behaviour.
+						label == *receiver_name
+					} else {
+						label == *label_to_find
 					}
+				};
+
+				if has_match {
+					restore_positions.push(op_pos);
+
+					is_first_match = false;
 				}
 			}
 		}
@@ -1523,12 +1562,11 @@ impl<'code> OopParser<'code> {
 	}
 
 	/// Returns true if this operation modified the parser position.
-	pub fn apply_label_operation(&mut self, label: &DosString, label_op: LabelOperation) -> bool {
+	pub fn apply_label_operation(&mut self, receiver_name_opt: Option<&DosString>, label: &DosString, label_op: LabelOperation) -> bool {
 		match label_op {
 			LabelOperation::Jump => { self.jump_to_label(label) }
 			LabelOperation::Zap => { self.zap_label(label); false }
-			LabelOperation::RestoreAll => { self.restore_labels(label, true); false }
-			LabelOperation::Restore => { self.restore_labels(label, false); false }
+			LabelOperation::RestoreZztStyle => { self.restore_labels(receiver_name_opt, label); false }
 		}
 	}
 

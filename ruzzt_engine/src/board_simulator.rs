@@ -838,7 +838,7 @@ impl BoardSimulator {
 						}
 
 						if is_matching_status {
-							let changed_pos = parser.apply_label_operation(label, *operation);
+							let changed_pos = parser.apply_label_operation(receiver_name_opt.as_ref(), label, *operation);
 
 							let new_code_opt = if let Cow::Owned(new_code) = parser.code {
 								Some(new_code)

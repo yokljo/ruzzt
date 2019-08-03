@@ -213,13 +213,17 @@ impl PlayerItemType {
 pub enum LabelOperation {
 	/// Jump to a given label.
 	Jump,
-	/// Zap a given label (replace the : character with a ' character).
+	/// Zap a given label (replace the `:` character with a `'` character).
 	Zap,
-	// This is for when you #restore x. It restores all matching label in the object.
-	RestoreAll,
-	// This is for when you #restore [anything]:x. It restores one matching label per matching
-	// object.
-	Restore,
+	/// This is for when you `#restore [object_name:]label_name`. It restores (replaces the `'`
+	/// character with a `:` character) the first label matching `label_name`. For all following
+	/// matches in the code, if there is an `object_name`, it will restore any labels matching that
+	/// object name, otherwise, it will continue matching against `label_name`.
+	/// For example, running the following:
+	/// status1: `#restore a:b`
+	/// status2: `@a\r'b\r'b\r'a\r`
+	/// The status2 code will become `@a\r:b\r'b\r:a\r`.
+	RestoreZztStyle,
 }
 
 /// Whether some movement action was blocked or not.
