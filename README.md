@@ -18,8 +18,11 @@ correctly.
 
 1. Clone the repository.
 2. Install the Rust compiler ([Rust](https://rust-lang.org)).
-3. Since this project uses the `sdl2` crate, you will need to install SDL2 as well. Follow the
-   instructions in the [sdl2 crate README](https://github.com/Rust-SDL2/rust-sdl2).
+3. Since this project uses the `sdl2` Rust crate, you will need to install the appropriate SDL2
+   package for your operating system as well. Follow the instructions under the "Requirements"
+   heading in the [sdl2 crate README](https://github.com/Rust-SDL2/rust-sdl2) to set up SDL2 on
+   your operating system. You do not need to download `rust-sdl2`, as that will be handled by
+   `cargo` in the next step.
 4. In the root directory of the repository:
    - `cd ruzzt`
    - `cargo run` (Note that `cargo` is shipped with the main Rust installer)
