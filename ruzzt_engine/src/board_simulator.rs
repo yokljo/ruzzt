@@ -11,12 +11,6 @@ use std::cmp::Ordering;
 use std::rc::Rc;
 use rand::Rng;
 
-// http://apocalyptech.com/games/zzt/manual/langref.html
-// http://www.chriskallen.com/zzt/behaviors.html
-// http://www.chriskallen.com/zzt/zztoop.php (see LEGACYTICK)
-// http://www.chriskallen.com/zzt/zztoop.php#soundfx
-// https://museumofzzt.com/file/m/Mwencv14.zip?file=zztop.txt
-
 // These are two larger than 60x25 becuase a border of BoardEdge tiles is added.
 pub const BOARD_WIDTH: usize = 62;
 pub const BOARD_HEIGHT: usize = 27;

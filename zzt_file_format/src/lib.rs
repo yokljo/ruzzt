@@ -8,9 +8,7 @@ use num_derive::FromPrimitive;
 use num::FromPrimitive;
 use byteorder::{LittleEndian, ReadBytesExt, WriteBytesExt};
 
-// http://www.shikadi.net/moddingwiki/ZZT_Format
-// http://zzt.org/zu/wiki/File_Format
-// http://zzt.org/zzt/zztff.txt
+// See: http://www.shikadi.net/moddingwiki/ZZT_Format
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Highscore {

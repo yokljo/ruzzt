@@ -533,8 +533,6 @@ pub struct ScrollBehaviour;
 
 impl Behaviour for ScrollBehaviour {
 	fn step(&self, _event: Event, status: &StatusElement, _status_index: usize, sim: &BoardSimulator) -> ActionResult {
-		// http://zzt.org/zu/wiki/Scroll
-
 		let tile_opt = sim.get_status_tile(status);
 		if let Some(tile) = tile_opt {
 			let bg = tile.colour >> 4;
