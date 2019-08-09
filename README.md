@@ -8,7 +8,7 @@ A clone of the engine for the DOS game "[ZZT](https://en.wikipedia.org/wiki/ZZT)
 My wife and I wrote this as a fun exercise, and went a lot further with it than originally
 anticipated. We wanted to try to replicate the original game's behaviour by simply looking at it
 running in Dosbox and seeing if we could make RUZZT do the same thing. This means the code
-architechure is likely very different from the original game.
+architecture is likely very different from the original game.
 
 Eventually we did get far enough that it seemed like a waste of time to try to guess how some
 specific things were implemented, so we used a disassembler to make sure various behaviours worked
