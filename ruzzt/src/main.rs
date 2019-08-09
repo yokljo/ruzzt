@@ -52,16 +52,6 @@ struct ZztConsole {
 
 impl ZztConsole {
 	fn new() -> ZztConsole {
-		//let mut file = std::fs::File::open("/home/joshua/Desktop/Dev/vc/hg/zztclone/junk/zztenc/1ENCY3C.ZZT").unwrap();
-		//let mut file = std::fs::File::open("/home/joshua/Desktop/Dev/vc/hg/zztclone/junk/zzt/PREPOSTM.ZZT").unwrap();
-		//let mut file = std::fs::File::open("/home/joshua/Desktop/Dev/vc/hg/zztclone/junk/zzt/TOWN.ZZT").unwrap();
-		//let mut file = std::fs::File::open("/home/joshua/Desktop/Dev/vc/hg/zztclone/zzt/SAVED.SAV").unwrap();
-		//let start_board = Some(27);
-		//let start_board = None;
-
-		//let world = zzt_file_format::World::parse(&mut file).unwrap();
-		// world, start_board
-
 		let command_arguments = clap::App::new("ruzzt")
 			.about("A ZZT clone")
 			.arg(clap::Arg::with_name("WORLD_FILE")
@@ -254,14 +244,6 @@ impl ZztConsole {
 
 		sdl_context.mouse().show_cursor(false);
 
-		/*for (i, char_code) in world.world_header.world_name.data.iter().enumerate() {
-			self.screen_chars[1][i] = ConsoleChar {
-				char_code: *char_code,
-				background: ConsoleColour::Purple,
-				foreground: ConsoleColour::LightBlue,
-			};
-		}*/
-
 		let start_time_ms = get_ms_from_duration(SystemTime::now().duration_since(UNIX_EPOCH).unwrap());
 		let mut last_time_ms = start_time_ms;
 
@@ -411,20 +393,6 @@ impl ZztConsole {
 				}
 			}
 
-			/*for y in 0 .. SCREEN_HEIGHT {
-				for x in 0 .. SCREEN_WIDTH {
-					self.screen_chars[y][x] = ConsoleChar {
-						char_code: ((x * y + n) % 255) as u8,
-						background: ConsoleColour::from_u8(((x + n) % 16) as u8).unwrap(),
-						foreground: ConsoleColour::from_u8(((y + n) % 16) as u8).unwrap(),
-					};
-				}
-			}
-
-			n += 1;*/
-
-			//let ref board_tiles = world.boards[0].tiles;
-
 			let mut board_messages = if in_typing_mode {
 				self.engine.process_typing(engine_typing_event)
 			} else {
@@ -496,23 +464,9 @@ impl ZztConsole {
 				audio_device.lock().clear_sound_queue();
 			}
 
-			/*let mut i = 0;
-			for y in 0 .. 16 {
-				for x in 0 .. 16 {
-					self.screen_chars[y][x] = ConsoleChar {
-						char_code: (i % 255) as u8,
-						background: ConsoleColour::Black,
-						foreground: ConsoleColour::White,
-					};
-					i += 1;
-				}
-			}*/
-
 			self.draw_screen(&mut canvas, &mut dosfont_tex, false);
 
 			canvas.present();
-
-			//let delay = 60u64;
 
 			let current_time_ms = get_ms_from_duration(SystemTime::now().duration_since(UNIX_EPOCH).unwrap());
 
@@ -543,10 +497,3 @@ pub fn main() {
 	let mut console = ZztConsole::new();
 	console.run();
 }
-
-/*fn main() {
-	let mut file = std::fs::File::open("/home/joshua/Desktop/Dev/vc/hg/zztclone/junk/zzt/CAVES.ZZT").unwrap();
-
-	let world = zzt_file_format::World::parse(&mut file).unwrap();
-	println!("{:#?}", world);
-}*/
