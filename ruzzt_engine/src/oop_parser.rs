@@ -40,7 +40,7 @@ pub enum OopOperator {
 
 /// Call `found_fn` for each tile on the board matching the given `tile_desc`.
 /// `found_fn` takes the x/y position of each matching tile.
-fn search_tile_desc(tile_desc: TileTypeDesc, sim: &BoardSimulator, found_fn: &mut FnMut(i16, i16, BoardTile)) {
+fn search_tile_desc(tile_desc: TileTypeDesc, sim: &BoardSimulator, found_fn: &mut dyn FnMut(i16, i16, BoardTile)) {
 	sim.visit_all_tiles(&mut |x, y, tile| {
 		if tile_desc.matches(tile) {
 			found_fn(x, y, tile);

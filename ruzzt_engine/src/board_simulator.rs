@@ -60,7 +60,7 @@ pub struct BoardSimulator {
 	/// particular `ElementType`, cast the ElementType to a u8, then use that to index this list.
 	/// The behaviours are loaded into this list via the `set_behaviour` method.
 	/// These are `Rc` so that `Behaviour` doesn't need to impl `Clone`.
-	pub behaviours: Vec<Option<Rc<Behaviour>>>,
+	pub behaviours: Vec<Option<Rc<dyn Behaviour>>>,
 }
 
 impl BoardSimulator {
@@ -92,7 +92,7 @@ impl BoardSimulator {
 	}
 
 	/// Assign a `Behaviour` to an `ElementType`. This defines how tiles of this type are simulated.
-	pub fn set_behaviour(&mut self, element_type: ElementType, behaviour: Box<Behaviour>) {
+	pub fn set_behaviour(&mut self, element_type: ElementType, behaviour: Box<dyn Behaviour>) {
 		let index = element_type as usize;
 		while self.behaviours.len() <= index {
 			self.behaviours.push(None);
@@ -114,7 +114,7 @@ impl BoardSimulator {
 
 	/// Calls `visit_fn` with every tile on the board.
 	/// `visit_fn` takes the x/y position of each tile, and the tile itself.
-	pub fn visit_all_tiles(&self, visit_fn: &mut FnMut(i16, i16, BoardTile)) {
+	pub fn visit_all_tiles(&self, visit_fn: &mut dyn FnMut(i16, i16, BoardTile)) {
 		for x in (0 .. BOARD_WIDTH).rev() {
 			for y in (0 .. BOARD_HEIGHT).rev() {
 				visit_fn(x as i16, y as i16, self.get_tile(x as i16, y as i16).unwrap());
@@ -264,7 +264,7 @@ impl BoardSimulator {
 	}
 
 	/// Get the behaviour associated with the given `element_id`.
-	fn behaviour_for_element_id(&self, element_id: u8) -> &Behaviour {
+	fn behaviour_for_element_id(&self, element_id: u8) -> &dyn Behaviour {
 		let behaviour_opt = self.behaviours.get(element_id as usize);
 
 		if let Some(Some(behaviour)) = behaviour_opt {
@@ -275,7 +275,7 @@ impl BoardSimulator {
 	}
 
 	/// Get the behaviour associated with the given x/y position.
-	pub fn behaviour_for_pos(&self, x: i16, y: i16) -> &Behaviour {
+	pub fn behaviour_for_pos(&self, x: i16, y: i16) -> &dyn Behaviour {
 		if let Some(tile) = self.get_tile(x, y) {
 			self.behaviour_for_element_id(tile.element_id)
 		} else {

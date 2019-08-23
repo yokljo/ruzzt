@@ -554,7 +554,7 @@ impl Behaviour for ScrollBehaviour {
 
 	fn push(&self, x: i16, y: i16, push_off_x: i16, push_off_y: i16, is_player: bool, sim: &BoardSimulator) -> PushResult {
 		let mut actions = vec![];
-		let mut continuation: Option<Box<ActionContinuation>> = None;
+		let mut continuation: Option<Box<dyn ActionContinuation>> = None;
 
 		if is_player {
 			let status_element_opt = sim.get_first_status_for_pos(x, y);
@@ -695,7 +695,7 @@ impl Behaviour for DuplicatorBehaviour {
 		let next_step = (status.param1 + 1) % 5;
 
 		let mut actions = vec![Action::SetStatusParam1{value: next_step, status_index}];
-		let mut continuation: Option<Box<ActionContinuation>> = None;
+		let mut continuation: Option<Box<dyn ActionContinuation>> = None;
 
 		if next_step == 0 {
 			let source_x = status.location_x as i16 + status.step_x;

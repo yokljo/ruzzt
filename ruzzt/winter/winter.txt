@@ -1,0 +1,118 @@
+
+  --
+  winter
+  by myth (myth@inquo.net)
+
+  readme file
+  --
+  
+  This game grew from a seed of desperation and jealousy.  After more or
+  less stumbling upon mono's Summer '98 24-hour competition, I found 
+  myself with a strong desire to return to zzt.  In fact I was desperate 
+  to do anything at all, since for a long time (since HQSE) my mind had
+  completely failed to produce any viable ideas for megazeux.  After
+  nightplanet, I saw a tremendous influx of terrific zzt games, including
+  pop and edible v0mit which, along with my rediscovery of kudzu and
+  bizanloo, made me horrifically jealous of the vision of these games'
+  makers.  These are games of atmosphere, games of meaning, games that
+  come the closest to the pure art possible in zzt.  Jealousy, then, I
+  would claim is the mother of invention and in that spirit I took the
+  bits and pieces of zzt ideas I had scribbled since Fred!2 and began to
+  put them together.
+
+  The result of this conglomeration (along with a bit of inspiration from
+  myst) is winter, my first (non 24-hour) zzt game in several years.  Its
+  creation took place mostly in the months of may and june in 1999,
+  picking up momentum after I finished high school.  
+
+  Like its predecessors, winter is a game based on atmosphere, instinct and
+  intelligence.  In some ways (whether good or bad), winter takes these
+  tenets to an extreme.  This has several ramifications for the player:
+
+  1. The concept of atmosphere over all else is best shown by the fact
+  that winter uses only a very small amount of text.  I've always been
+  disappointed by the ugly way that zzt presents words -- in that cutesy
+  little scrolling blue thingy that gives you no control.  In winter I
+  made a conscious effort to avoid using any such zzt pop-up text
+  dialogues.  The result of this is that most puzzles must be figured out
+  through other means -- through sight, sound, and intuition.
+
+  2. The means of sound is very important to winter.  I realize that many
+  people find the scratchings of the pc bleeper hard on the ears.
+  Nevertheless, its use is necessary to complete the game.  Many puzzles
+  are solved easiest through audio clues.
+
+  3. The game has very little story.  Originally I intended it to be a 
+  deep disturbing tale but (for better or worse) I ended up with
+  something completely different.  Interpret the game as you will.  I
+  have my own ideas about the story of the game towards which I have
+  pushed the design, but in the end, you will have to decide what it
+  means for yourself.  Again, winter is about atmosphere, not plot.
+
+  Below I provide some hints (though not a walkthrough or spoiler by any
+  means) that will help you through the game.
+
+  * Be observant.  Everything that you see in winter has importance.
+  There are no red herrings.  The color, shape, and position of everything
+  has some sort of significance.  Stay alert and explore your
+  surroundings.  This game has no instant deaths and you will find it
+  very difficult to die.
+
+  * Save often.  Most of the puzzles in winter are non-destructive -- that
+  is, you can try them over and over again without restoring your game.
+  However, there are some few (e.g., the bomb puzzle in the mesa) that
+  you only get one shot at, and it *is* possible to foul up the game
+  beyond repair (by, for instance, not using your purple keys).  As with
+  all zzt games, saving is the best policy.
+
+  * Don't get frustrated.  If you're stuck, take a break and try again
+  later.  There is nothing in winter that can't be solved.  As Rand and
+  Robyn Miller put it, think as though you were really there.  I'll
+  answer any questions that you have via e-mail (myth@inquo.net), but
+  remember that I don't really care if you cheat.
+
+  Though it won't necessarily help you win the game, the recommended
+  playing conditions for winter are these: play it in the middle of the
+  night, with all lights out, in a large silent room.  If anyone ever
+  plays the game while on hallucinogens, please contact me and describe
+  the experience. :)
+
+  Lastly, I'd like to thank a few people for their influence on this game.
+  In particular, I am deeply in debt to the grandmasters of the art, cly5m 
+  and tucan, whose respective works (kudzu and pop) have had an obvious and 
+  pervasive influence on my zzt style.  kudzu's clean graphics and pop's 
+  tongue-in-cheek mystery have made winter the game that it is.  I also
+  tip my hat to Damien Wellman, whose Emanon gave me ideas for many
+  portions of the game, especially the mesa.
+
+  I'd like to thank my good friends yenrab, xf, creator and majiCk, who,
+  after I mentioned the idea of a textless game, didn't laugh too hard.
+  (Here's hoping that Fred!3 and Llama Masters 3 come out sometime before
+  we all get old and grey.) I also thank my betatesters immensely for
+  doing a great job.  Special greetings to all the megazeux folk who once
+  abandoned zzt -- thanks for taking a look again on my account.
+  Greetings to all the denizens of the zzt-related channels on austnet
+  which, despite their faults, definitely have their good moments.
+  Finally, greetings and thanks to all the zzt designers out there who
+  are keeping this oddball art alive.  Keep up the good work.
+
+  (I suppose I should also greet the following people who will most 
+  definitely never see this but have had an influence nonetheless:
+  greetings to Rand and Robyn Miller, Roger Waters, Thom Yorke, Beth
+  Gibbons, Miles Davis, Bjorn Lynne, Gustav Holst, and Pokey the Penguin.)
+
+  Pseudo-legal stuff: winter is copyright 1999 by me.  Feel free to
+  distribute it in its unmodified form (accompanied by this text file).
+  This game is e-mailware: if you enjoyed it, you're obligated to send
+  me a note by e-mail (myth@inquo.net).  If you don't, my lawyers will
+  hunt you down and give you a wedgie.
+  
+  Thanks for downloading and playing.
+
+  Adam Parrish
+  myth@inquo.net
+  http://www.inquo.net/~myth/zzt/
+
+  5 July 1999
+
+  --

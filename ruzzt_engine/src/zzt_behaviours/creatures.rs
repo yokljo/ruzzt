@@ -301,7 +301,7 @@ impl Behaviour for ObjectBehaviour {
 			}
 		}
 
-		let continuation: Option<Box<ActionContinuation>> = Some(Box::new(OopExecutionState::new(false, None)));
+		let continuation: Option<Box<dyn ActionContinuation>> = Some(Box::new(OopExecutionState::new(false, None)));
 
 		ActionResult {
 			actions,

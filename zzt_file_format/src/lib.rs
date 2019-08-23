@@ -30,7 +30,7 @@ impl Default for Highscores {
 }
 
 impl Highscores {
-	pub fn parse(stream: &mut std::io::Read) -> Result<Highscores, String> {
+	pub fn parse(stream: &mut dyn std::io::Read) -> Result<Highscores, String> {
 		let mut highscores = Highscores::default();
 		for _ in 0 .. 30 {
 			let name_len = stream.read_u8().map_err(|e| format!("Failed to read name length: {}", e))?;
@@ -50,7 +50,7 @@ impl Highscores {
 		Ok(highscores)
 	}
 
-	pub fn write(&self, stream: &mut std::io::Write) -> Result<(), String> {
+	pub fn write(&self, stream: &mut dyn std::io::Write) -> Result<(), String> {
 		for score_index in 0 .. 30 {
 			if let Some(highscore) = self.scores.get(score_index) {
 				let real_name_len = highscore.name.len().min(50) as u8;
@@ -112,7 +112,7 @@ impl World {
 		})
 	}
 
-	pub fn write(&self, stream: &mut std::io::Write) -> Result<(), String> {
+	pub fn write(&self, stream: &mut dyn std::io::Write) -> Result<(), String> {
 		let mut header_buf = vec![];
 		self.world_header.write(&mut header_buf).map_err(|e| format!("WorldHeader: {}", e))?;
 		stream.write(&header_buf).map_err(|e| format!("Failed to write world header data: {}", e))?;
@@ -199,7 +199,7 @@ impl WorldHeader {
 		}
 	}
 
-	pub fn parse(stream: &mut std::io::Read) -> Result<WorldHeader, String> {
+	pub fn parse(stream: &mut dyn std::io::Read) -> Result<WorldHeader, String> {
 		let world_type_num = stream.read_i16::<LittleEndian>().map_err(|e| format!("Failed to read world type: {}", e))?;
 		let world_type = match world_type_num {
 			-1 => WorldType::Zzt,
@@ -319,7 +319,7 @@ impl WorldHeader {
 		})
 	}
 
-	fn write(&self, stream: &mut std::io::Write) -> Result<(), String> {
+	fn write(&self, stream: &mut dyn std::io::Write) -> Result<(), String> {
 		let world_type_num = match self.world_type {
 			WorldType::Zzt => -1,
 			WorldType::SuperZzt => -2,
@@ -664,7 +664,7 @@ impl Board {
 		board
 	}
 
-	pub fn parse(stream: &mut std::io::Read, world_type: WorldType) -> Result<Board, String> {
+	pub fn parse(stream: &mut dyn std::io::Read, world_type: WorldType) -> Result<Board, String> {
 		// Board header:
 		let board_size = stream.read_i16::<LittleEndian>().map_err(|e| format!("Failed to read board size: {}", e))?;
 		let board_name_len = stream.read_u8().map_err(|e| format!("Failed to read board name length: {}", e))?;
@@ -804,7 +804,7 @@ impl Board {
 		})
 	}
 
-	fn write(&self, final_stream: &mut std::io::Write, world_type: WorldType) -> Result<(), String> {
+	fn write(&self, final_stream: &mut dyn std::io::Write, world_type: WorldType) -> Result<(), String> {
 		// Need to buffer the whole board before writing it so the board_size can be calculated then
 		// written out first:
 		let mut stream = vec![];
@@ -1011,7 +1011,7 @@ pub struct StatusElement {
 }
 
 impl StatusElement {
-	fn parse(stream: &mut std::io::Read, world_type: WorldType) -> Result<StatusElement, String> {
+	fn parse(stream: &mut dyn std::io::Read, world_type: WorldType) -> Result<StatusElement, String> {
 		let location_x = stream.read_u8().map_err(|e| format!("Failed to read X location: {}", e))?;
 		let location_y = stream.read_u8().map_err(|e| format!("Failed to read Y location: {}", e))?;
 
@@ -1068,7 +1068,7 @@ impl StatusElement {
 		})
 	}
 
-	fn write(&self, stream: &mut std::io::Write, world_type: WorldType) -> Result<(), String> {
+	fn write(&self, stream: &mut dyn std::io::Write, world_type: WorldType) -> Result<(), String> {
 		stream.write_u8(self.location_x).map_err(|e| format!("Failed to write X location: {}", e))?;
 		stream.write_u8(self.location_y).map_err(|e| format!("Failed to write Y location: {}", e))?;
 		stream.write_i16::<LittleEndian>(self.step_x).map_err(|e| format!("Failed to write X step: {}", e))?;

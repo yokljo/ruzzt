@@ -48,7 +48,7 @@ pub fn monster_push(x: i16, y: i16, is_player: bool, sim: &BoardSimulator) -> Pu
 	}
 }
 
-pub fn monster_damage(behaviour: &Behaviour, x: i16, y: i16, damage_type: DamageType, sim: &BoardSimulator, actions: &mut Vec<Action>) -> DamageResult {
+pub fn monster_damage(behaviour: &dyn Behaviour, x: i16, y: i16, damage_type: DamageType, sim: &BoardSimulator, actions: &mut Vec<Action>) -> DamageResult {
 	if let Some((_, ref status)) = sim.get_first_status_for_pos(x, y) {
 		actions.push(Action::SetTile {
 			x,

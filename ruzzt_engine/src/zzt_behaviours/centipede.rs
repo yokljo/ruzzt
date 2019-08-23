@@ -13,7 +13,7 @@ struct HeadStepContext<'l> {
 	new_step_x: i16,
 	new_step_y: i16,
 	actions: Vec<Action>,
-	continuation: Option<Box<ActionContinuation>>,
+	continuation: Option<Box<dyn ActionContinuation>>,
 	status_index_for_head: usize,
 	status: &'l StatusElement,
 	status_index: usize,

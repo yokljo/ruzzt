@@ -28,7 +28,7 @@ fn world_selection_info(world_name: &[u8]) -> &[u8] {
 		b"CAVES" => b"The Caves of ZZT",
 		b"CITY" => b"Underground City of ZZT",
 		b"DUNGEONS" => b"The Dungeons of ZZT",
-		b"TOUR" => b"Guided Tour of ZZT's Other Worlds",
+		b"TOUR" => b"Guided Tour ZZT's Other Worlds",
 		b"TOWN" => b"The Town of ZZT",
 		_ => b"",
 	}
@@ -143,6 +143,7 @@ impl ZztConsole {
 		let mut files = vec![];
 		let mut world_selection_state = WorldSelectionState{entries: vec![]};
 
+		// TODO: Sort this list.
 		if let Ok(read_dir) = std::fs::read_dir(".") {
 			for dir_file in read_dir {
 				if let Ok(dir_file_entry) = dir_file {

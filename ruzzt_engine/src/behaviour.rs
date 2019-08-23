@@ -350,7 +350,7 @@ pub struct ActionResult {
 	pub actions: Vec<Action>,
 	/// If this is not None, it will be the continuation object to use to keep executing logic after
 	/// applying `actions`. See `ActionContinuation`.
-	pub continuation: Option<Box<ActionContinuation>>,
+	pub continuation: Option<Box<dyn ActionContinuation>>,
 }
 
 impl ActionResult {
